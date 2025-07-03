@@ -25,4 +25,8 @@ export default defineConfig({
             '@': path.resolve(__dirname, './resources/js'),
         },
     },
+    build: {
+        outDir: 'dist',
+    },
+    base: '/proyecto-prueba/',
 });
