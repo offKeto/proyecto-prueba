@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+
+.bg-animado {
+    top: 0;
+    left: 0;
+    background: linear-gradient(-85deg, #ffe609, #ff0000, #ae25fd, #0432ff, #ae25fd, #ff0000, #ffe609);
+    background-size: 1000% 1000%;
+    animation: animacion 100s infinite;
+    z-index: -1;
+}
+
+@keyframes animacion {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.fade-galleria-enter-active,
+.fade-galleria-leave-active {
+    transition: opacity 0.2s;
+}
+.fade-galleria-enter-from,
+.fade-galleria-leave-to {
+    opacity: 0;
+}
+.fade-galleria-enter-to,
+.fade-galleria-leave-from {
+    opacity: 1;
+}
