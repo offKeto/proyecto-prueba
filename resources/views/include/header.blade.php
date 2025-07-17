@@ -17,7 +17,7 @@
     <nav
         class="fixed top-0 left-0 w-screen h-1/9 flex items-center justify-around bg-gray-800 p-4 text-white text-xl shadow-2xl opacity-95">
         <div class="flex space-x-10 items-center">
-            <a href="http://localhost:8000/">
+            <a href="/">
                 <img class="hover:scale-110 transition-transform size-10" src="{{ asset('assets/img/logo.png') }}"
                     alt="Logo">
             </a>
@@ -26,5 +26,15 @@
             <a class="hover:text-gray-400 transition-transform transform hover:scale-110" href="/contact">Contacto</a>
             <a class="hover:text-gray-400 transition-transform transform hover:scale-110" href="/to-do-list">Tareas por
                 hacer</a>
-        </div>
-    </nav>
+            @auth
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                    class="hover:text-gray-400 transition-transform transform hover:scale-110">Logout</a>
+            @else
+                <a class="hover:text-gray-400 transition-transform transform hover:scale-110" href="/login">Login</a>
+                <a class="hover:text-gray-400 transition-transform transform hover:scale-110" href="/register">Register</a>
+                @endif
+            </div>
+        </nav>

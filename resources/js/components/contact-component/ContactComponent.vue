@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps<{
     csrfToken: string;
+    user: { name: string; email: string } | null;
 }>();
 </script>
 <template>
@@ -15,11 +16,25 @@ defineProps<{
                 <div class="mx-20 flex flex-col gap-4 rounded-2xl bg-indigo-500 p-6 text-left text-gray-200 shadow-2xl">
                     <div>
                         <label for="name" class="text-sm font-semibold">Nombre: </label>
-                        <input type="text" name="name" id="name" class="mt-1 w-full rounded-md border border-gray-300 p-2 text-sm font-normal" />
+                        <input
+                            type="text"
+                            name="name"
+                            :value="user ? user.name : ''"
+                            :disabled="!!user"
+                            id="name"
+                            class="mt-1 w-full rounded-md border border-gray-300 p-2 text-sm font-normal"
+                        />
                     </div>
                     <div>
                         <label for="email" class="text-sm font-semibold">Correo electrónico: </label>
-                        <input type="email" name="email" id="email" class="mt-1 w-full rounded-md border border-gray-300 p-2 text-sm font-normal" />
+                        <input
+                            type="email"
+                            :value="user ? user.email : ''"
+                            :disabled="!!user"
+                            name="email"
+                            id="email"
+                            class="mt-1 w-full rounded-md border border-gray-300 p-2 text-sm font-normal"
+                        />
                     </div>
                     <div>
                         <label for="subject" class="text-sm font-semibold">Asunto: </label>

@@ -12,5 +12,5 @@
         }, 3000);
     </script>
 @endif
-<div id="contactapp" data-csrf="{{ csrf_token() }}"></div>
+<div id="contactapp" data-csrf="{{ csrf_token() }}" data-user='@json($user)'></div>
 @extends('include.footer')

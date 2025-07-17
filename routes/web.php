@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\GuzzleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 use App\Services\MailService;
-
+use Illuminate\Support\Facades\Auth;
 
 Route::controller(HomeController::class)->group(function () {
   Route::get('/', 'returnHomeView');
@@ -29,7 +31,12 @@ Route::controller(TaskController::class)->group(function () {
   Route::post('/to-do-list/tasks', 'createTask');
 });
 
+Route::get('/fetchData', [GuzzleController::class, 'fetchData']);
 
-
-require __DIR__ . '/settings.php';
-require __DIR__ . '/auth.php';
+Route::controller(AuthController::class)->group(function () {
+  Route::get('/register', 'returnRegisterView');
+  Route::get('/login', 'returnLoginView');
+  Route::post('/register', 'handleRegister');
+  Route::post('/login', 'handleLogin');
+  Route::post('/logout', 'handleLogout')->name('logout');
+});
