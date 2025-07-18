@@ -31,8 +31,6 @@ Route::controller(TaskController::class)->group(function () {
   Route::post('/to-do-list/tasks', 'createTask');
 });
 
-Route::get('/fetchData', [GuzzleController::class, 'fetchData']);
-
 Route::controller(AuthController::class)->group(function () {
   Route::get('/register', 'returnRegisterView');
   Route::get('/login', 'returnLoginView');
